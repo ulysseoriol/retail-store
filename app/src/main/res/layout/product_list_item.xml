@@ -1,0 +1,45 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/cardview_default_size"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/default_margin"
+    android:elevation="@dimen/cardview_elevation"
+    android:background="?selectableItemBackground"
+    card_view:cardCornerRadius="@dimen/cardview_radius">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="@integer/textview_default_ems"
+            android:layout_alignParentTop="true"/>
+
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:ems="@integer/textview_default_ems"
+            android:inputType="none"
+            android:padding="@dimen/default_padding"
+            android:layout_below="@id/productName"/>
+
+        <TextView
+            android:id="@+id/actionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
