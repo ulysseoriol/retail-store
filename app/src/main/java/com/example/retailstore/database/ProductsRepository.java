@@ -51,15 +51,30 @@ public class ProductsRepository
     {
         if(database != null)
         {
-
             Executors.newSingleThreadExecutor().execute(() -> {
                 database.productDao().updateIsInCart(isInCart, productName);
             });
         }
     }
 
-    public Product getProduct(String productName)
+    public LiveData<Product> getProduct(String productName)
     {
-        mObservableProducts.getValue().get()
+        LiveData<Product> product = null;
+        if(database != null)
+        {
+            product = database.productDao().getProduct(productName);
+        }
+
+        return product;
+    }
+
+    public void addProduct(Product product)
+    {
+        if(database != null)
+        {
+            Executors.newSingleThreadExecutor().execute(() -> {
+                database.productDao().insertProduct(product);
+            });
+        }
     }
 }

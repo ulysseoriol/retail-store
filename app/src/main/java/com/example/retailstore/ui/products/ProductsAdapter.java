@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.retailstore.R;
 import com.example.retailstore.database.data.Product;
+import com.example.retailstore.ui.productdetails.ProductDetailsFragment;
 
 import java.util.List;
 
@@ -86,9 +87,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Generi
                     public void onClick(View view)
                     {
                         Bundle bundle = new Bundle();
-//                        String salonJsonString =
-//                                HelperMethods.getGsonParser().toJson(salonModel);bundle.putString("SALON_DETAILS", salonJsonString);
-                        Navigation.findNavController(view).navigate(R.id.nav_product_details,bundle);
+                        bundle.putString(ProductDetailsFragment.EXTRA_PRODUCT_NAME,products.get(position).getName());
+                        Navigation.findNavController(view).navigate(R.id.nav_product_details_fragment,bundle);
                     }
                 });
             }

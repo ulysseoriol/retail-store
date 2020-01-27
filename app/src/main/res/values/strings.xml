@@ -6,12 +6,16 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_filter">Filter</string>
+    <string name="action_done">Done</string>
 
     <string name="menu_cart">Cart</string>
     <string name="menu_products">Product List</string>
+    <string name="add_product_title">Add Product</string>
     <string name="delete_button_title">DELETE FROM CART</string>
     <string name="add_button_title">ADD TO CART</string>
     <string name="product_added_text">added to cart</string>
     <string name="product_removed_text">removed from cart</string>
     <string name="price_total_text">TOTAL: </string>
+    <string name="product_name_text">Product Name</string>
+    <string name="product_price_text">Product Price</string>
 </resources>

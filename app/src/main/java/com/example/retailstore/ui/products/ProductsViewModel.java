@@ -40,8 +40,13 @@ public class ProductsViewModel extends AndroidViewModel
         mRepository.updateIsInCart(false, mProducts.getValue().get(position).getName());
     }
 
-    public Product getProduct(String productName)
+    public LiveData<Product> getProduct(String productName)
     {
         return mRepository.getProduct(productName);
+    }
+
+    public void addProduct(Product product)
+    {
+        mRepository.addProduct(product);
     }
 }

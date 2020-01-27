@@ -19,6 +19,9 @@ public interface ProductDao
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAll(List<Product> products);
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertProduct(Product product);
+
     @Query("DELETE FROM " + Product.TABLE_NAME)
     void deleteAll();
 
@@ -29,8 +32,8 @@ public interface ProductDao
     LiveData<List<Product>> getCartProducts();
 
     @Query("UPDATE PRODUCTS_TABLE SET isInCart = :isInCart WHERE productName = :productName")
-    int updateIsInCart(boolean isInCart, String productName);
+    void updateIsInCart(boolean isInCart, String productName);
 
     @Query("SELECT * from " + Product.TABLE_NAME + " WHERE productName = :productName")
-    Product getProduct(String productName);
+    LiveData<Product> getProduct(String productName);
 }
