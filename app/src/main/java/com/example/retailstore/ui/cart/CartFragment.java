@@ -7,10 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.retailstore.R;
+import com.example.retailstore.database.data.Product;
 import com.example.retailstore.ui.products.ProductsViewModel;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,10 +39,23 @@ public class CartFragment extends Fragment
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
 
-        viewModel.getAllProducts().observe(this, products ->  adapter.setProducts(products));
+        viewModel.getAllProducts().observe(this, new Observer<List<Product>>()
+        {
+            @Override
+            public void onChanged(List<Product> products)
+            {
+                adapter.setProducts(products);
 
-        setHasOptionsMenu(false);
-
+                double totalPrice = 0.0;
+                for (Product product :
+                        adapter.getProducts())
+                {
+                    totalPrice += product.getPrice();
+                }
+                priceTotalTV.setText(getResources().getText(R.string.price_total_text) + " " + totalPrice);
+            }
+        });
+        
         return root;
     }
 }

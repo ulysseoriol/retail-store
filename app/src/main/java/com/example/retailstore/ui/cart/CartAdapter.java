@@ -23,12 +23,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.GenericViewHol
     private ProductsViewModel viewModel;
     private Context context;
 
+    public List<Product> getProducts()
+    {
+        return products;
+    }
+
     public CartAdapter(ProductsViewModel viewModel, Context context)
     {
         this.viewModel = viewModel;
         this.context = context;
     }
-
 
     @Override
     public int getItemCount()

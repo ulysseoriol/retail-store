@@ -78,7 +78,7 @@ public class ProductsRepository
         }
     }
 
-    public double getCartTotal()
+    public void getCartTotal()
     {
         if (database != null)
         {

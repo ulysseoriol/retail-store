@@ -50,8 +50,4 @@ public class ProductsViewModel extends AndroidViewModel
         mRepository.addProduct(product);
     }
 
-    public double getCartTotal()
-    {
-        return mRepository.getCartTotal();
-    }
 }
