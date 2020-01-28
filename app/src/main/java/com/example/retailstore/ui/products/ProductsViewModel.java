@@ -35,9 +35,9 @@ public class ProductsViewModel extends AndroidViewModel
         mRepository.updateIsInCart(true, mProducts.getValue().get(position).getName());
     }
 
-    public void removeFromCart(int position)
+    public void removeFromCart(String productName)
     {
-        mRepository.updateIsInCart(false, mProducts.getValue().get(position).getName());
+        mRepository.updateIsInCart(false, productName);
     }
 
     public LiveData<Product> getProduct(String productName)
@@ -48,5 +48,10 @@ public class ProductsViewModel extends AndroidViewModel
     public void addProduct(Product product)
     {
         mRepository.addProduct(product);
+    }
+
+    public double getCartTotal()
+    {
+        return mRepository.getCartTotal();
     }
 }

@@ -13,7 +13,7 @@ import androidx.room.Query;
 @Dao
 public interface ProductDao
 {
-    @Query("SELECT * from " + Product.TABLE_NAME)
+    @Query("SELECT * FROM " + Product.TABLE_NAME)
     LiveData<List<Product>> getProducts();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -26,7 +26,7 @@ public interface ProductDao
     void deleteAll();
 
     @Query("SELECT COUNT(*) FROM " + Product.TABLE_NAME)
-    int count();
+    int getCount();
 
     @Query("SELECT * FROM " + Product.TABLE_NAME + " WHERE isInCart = 1")
     LiveData<List<Product>> getCartProducts();
@@ -34,6 +34,9 @@ public interface ProductDao
     @Query("UPDATE PRODUCTS_TABLE SET isInCart = :isInCart WHERE productName = :productName")
     void updateIsInCart(boolean isInCart, String productName);
 
-    @Query("SELECT * from " + Product.TABLE_NAME + " WHERE productName = :productName")
+    @Query("SELECT * FROM " + Product.TABLE_NAME + " WHERE productName = :productName")
     LiveData<Product> getProduct(String productName);
+
+    @Query("DELETE FROM " + Product.TABLE_NAME)
+    void clearTable();
 }

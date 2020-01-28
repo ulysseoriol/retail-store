@@ -86,7 +86,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.GenericViewHol
             actionButton.setText(R.string.delete_button_title);
             actionButton.setOnClickListener(view ->
             {
-                viewModel.removeFromCart(position);
+                viewModel.removeFromCart(products.get(position).getName());
                 Toast.makeText(context
                         ,products.get(position).getName()  + " " + context.getResources().getString(R.string.product_removed_text)
                         , Toast.LENGTH_LONG).show();

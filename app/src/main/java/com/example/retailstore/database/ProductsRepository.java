@@ -77,4 +77,12 @@ public class ProductsRepository
             });
         }
     }
+
+    public double getCartTotal()
+    {
+        if (database != null)
+        {
+
+        }
+    }
 }

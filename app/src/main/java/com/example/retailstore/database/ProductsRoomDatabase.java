@@ -31,7 +31,10 @@ public abstract class ProductsRoomDatabase extends RoomDatabase
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             ProductsRoomDatabase.class, DATABASE_NAME)
                             .build();
-                    INSTANCE.populateInitialData();
+                    Executors.newSingleThreadExecutor().execute(() -> {
+                        INSTANCE.clearAllTables();
+                        INSTANCE.populateInitialData();
+                    });
                 }
             }
         }
@@ -42,15 +45,13 @@ public abstract class ProductsRoomDatabase extends RoomDatabase
 
     private void populateInitialData()
     {
-        Executors.newSingleThreadExecutor().execute(() -> {
-            if (productDao().count() == 0)
+        if (INSTANCE.productDao().getCount() == 0)
+        {
+            runInTransaction(() ->
             {
-                runInTransaction(() ->
-                {
-                    List<Product> products = DataGenerator.generateProducts();
-                    productDao().insertAll(products);
-                });
-            }
-        });
+                List<Product> products = DataGenerator.generateProducts();
+                INSTANCE.productDao().insertAll(products);
+            });
+        }
     }
 }
